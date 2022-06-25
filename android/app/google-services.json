@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213467762970",
+    "project_id": "zen02-f5e5a",
+    "storage_bucket": "zen02-f5e5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213467762970:android:0a0e8e2d90edb7d03b9ca3",
+        "android_client_info": {
+          "package_name": "com.example.zen02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213467762970-g8lqdnf0vn2jrg80ar492egbecugjftb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA2tptfZgXFw7Wplm7Ra6wdDZcjtr8hkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213467762970-g8lqdnf0vn2jrg80ar492egbecugjftb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
