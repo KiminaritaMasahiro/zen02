@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zen02/view/Home/TodoTile.dart';
 
-class HomePage extends StatelessWidget {
+import '../../controllers/auth_controller.dart';
+
+class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textFieldController = TextEditingController();
     // ignore: unused_local_variable
     String? newText;
+    final authControllerState = ref.watch(authControllerProvider);
 
     void clearTextField() {
       textFieldController.clear();
@@ -32,7 +36,7 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(
               width: double.infinity,
-              height: 130,
+              height: 200, //130
               child: Column(
                 children: [
                   Row(
@@ -99,6 +103,22 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: authControllerState != null
+                          ? Column(
+                              children: [
+                                const Text("匿名ログイン中"),
+                                IconButton(
+                                    onPressed: () => ref
+                                        .read(authControllerProvider.notifier)
+                                        .singOut(),
+                                    icon: const Icon(Icons.logout))
+                              ],
+                            )
+                          : null,
                     ),
                   )
                 ],

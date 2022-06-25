@@ -14,21 +14,20 @@ final authRepositoryProvider =
     StateProvider<AuthRepository>((ref) => AuthRepository(ref.read));
 
 class AuthRepository implements BaseAuthRepository {
-
-  final Reader _read;           //リーダーを使うことでほかのプロバイダーを読み取れる
-  AuthRepository(this._read)
+  final Reader _read; //リーダーを使うことでほかのプロバイダーを読み取れる
+  AuthRepository(this._read);
 
   //ログイン状況の確認用
-  // ignore: empty_constructor_bodies
   @override
-  Stream<User?> get authStateChanges => _read(firebaseAuthProvider).authStateChanges();
-  
+  Stream<User?> get authStateChanges =>
+      _read(firebaseAuthProvider).authStateChanges();
+
   //匿名サインイン
   @override
   Future<void> signInAnonymously() async {
-    try{
+    try {
       await _read(firebaseAuthProvider).signInAnonymously();
-    }on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e.message);
     }
@@ -36,21 +35,22 @@ class AuthRepository implements BaseAuthRepository {
 
   //サインイン中のユーザを取得
   @override
-  User? getCurrentUser(){
-    try{
+  User? getCurrentUser() {
+    try {
       return _read(firebaseAuthProvider).currentUser;
-    }on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e.message);
       return null;
     }
   }
+
   //匿名サインアウト
   @override
-  Future<void> signOut()async{
-    try{
+  Future<void> signOut() async {
+    try {
       await _read(firebaseAuthProvider).signOut();
-    }on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e.message);
     }
