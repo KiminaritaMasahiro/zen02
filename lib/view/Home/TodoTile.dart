@@ -9,7 +9,9 @@ class TodoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 5),
+        Container(
+          height: 3,
+        ),
         Slidable(
           endActionPane: ActionPane(
             motion: const ScrollMotion(),
@@ -27,17 +29,26 @@ class TodoTile extends StatelessWidget {
             ],
           ),
           child: Material(
-            elevation: 2,
+            color: const Color.fromARGB(255, 230, 244, 255),
+            elevation: 100,
             child: SizedBox(
-              height: 70,
               child: ListTile(
                 leading: null,
-                title: const Text(
-                  "どうぞよろしくお",
-                  style: TextStyle(fontSize: 25),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "どうぞ",
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    Text(
+                      "2022/6/25 10:21",
+                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                    ),
+                  ],
                 ),
                 trailing: CupertinoSwitch(
-                  value: false,
+                  value: true,
                   onChanged: (val) {},
                 ),
               ),
